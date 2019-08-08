@@ -14,6 +14,7 @@
 		B85AACA822F1FEB6009891D5 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = B85AACA622F1FEB6009891D5 /* LaunchScreen.storyboard */; };
 		B85AACB322F1FEB6009891D5 /* project_stickersTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = B85AACB222F1FEB6009891D5 /* project_stickersTests.swift */; };
 		B85AACBE22F1FEB6009891D5 /* project_stickersUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = B85AACBD22F1FEB6009891D5 /* project_stickersUITests.swift */; };
+		B85AACD222F2015A009891D5 /* StickerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B85AACD122F2015A009891D5 /* StickerView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -47,6 +48,7 @@
 		B85AACB922F1FEB6009891D5 /* project-stickersUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "project-stickersUITests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
 		B85AACBD22F1FEB6009891D5 /* project_stickersUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = project_stickersUITests.swift; sourceTree = "<group>"; };
 		B85AACBF22F1FEB6009891D5 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		B85AACD122F2015A009891D5 /* StickerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StickerView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -100,6 +102,7 @@
 				B85AAC9D22F1FEB4009891D5 /* AppDelegate.swift */,
 				B85AAC9F22F1FEB4009891D5 /* ViewController.swift */,
 				B85AACA122F1FEB4009891D5 /* Main.storyboard */,
+				B85AACD122F2015A009891D5 /* StickerView.swift */,
 				B85AACA422F1FEB6009891D5 /* Assets.xcassets */,
 				B85AACA622F1FEB6009891D5 /* LaunchScreen.storyboard */,
 				B85AACA922F1FEB6009891D5 /* Info.plist */,
@@ -256,6 +259,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				B85AACD222F2015A009891D5 /* StickerView.swift in Sources */,
 				B85AACA022F1FEB4009891D5 /* ViewController.swift in Sources */,
 				B85AAC9E22F1FEB4009891D5 /* AppDelegate.swift in Sources */,
 			);
