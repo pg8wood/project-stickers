@@ -63,7 +63,7 @@ class StickerView: UIView {
     }
     
     private func drawTextBackgroundOutline() {
-        let outlineInset = CGFloat(integerLiteral: 2) * outlineThickness + textBackgroundOutlineThickness
+        let outlineInset = CGFloat(integerLiteral: 3) * outlineThickness + ((textBackgroundOutlineThickness - outlineThickness) / 2)
         drawOutline(in: bounds.insetBy(dx: outlineInset, dy: outlineInset), color: textBackgroundOutlineColor.cgColor, thickness: textBackgroundOutlineThickness)
     }
 }

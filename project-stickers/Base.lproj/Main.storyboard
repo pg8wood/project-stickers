@@ -35,7 +35,7 @@
                                         <real key="value" value="7"/>
                                     </userDefinedRuntimeAttribute>
                                     <userDefinedRuntimeAttribute type="number" keyPath="textBackgroundOutlineThickness">
-                                        <real key="value" value="7"/>
+                                        <real key="value" value="27"/>
                                     </userDefinedRuntimeAttribute>
                                 </userDefinedRuntimeAttributes>
                             </view>
