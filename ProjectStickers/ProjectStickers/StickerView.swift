@@ -8,9 +8,19 @@
 
 import SwiftUI
 
-var outlineColors: [Color] = [.blue, .black, .blue]
+var outlineColors: [Color] = [.blue, .red, .blue]
 
-let lineWidth = CGFloat(integerLiteral: 8)
+var outlineWidth: CGFloat = 6.0
+var badgeFeatureWidth: CGFloat = 40.0
+
+// Not super pretty, but since SwiftUI draws outlines outward from the Shape's bounding rect,
+// we must calculate the padding when using strokes of different thickness
+var badgeFeaturePadding: CGFloat {
+    let totalOutlinePadding =
+        outlineWidth * CGFloat(integerLiteral: outlineColors.count) - (outlineWidth / 2)
+    
+    return totalOutlinePadding + (badgeFeatureWidth / 2)
+}
 
 struct Badge : View {
 
@@ -18,21 +28,15 @@ struct Badge : View {
         ZStack {
             ForEach((0...outlineColors.count - 1), id: \.self) { index in
                 Circle()
-                    .stroke(outlineColors[index], lineWidth: lineWidth)
-                    .padding(lineWidth * CGFloat(integerLiteral: index))
+                    .stroke(outlineColors[index], lineWidth: outlineWidth)
+                    .padding(outlineWidth * CGFloat(integerLiteral: index))
             }
+            
+            Circle()
+                .stroke(Color.black, lineWidth: badgeFeatureWidth)
+                .padding(badgeFeaturePadding)
         }
         .padding(10)
-    }
-}
-
-struct MyShape : Shape {
-    func path(in rect: CGRect) -> Path {
-        var p = Path()
-
-        p.addArc(center: CGPoint(x: rect.midX, y: rect.midY), radius: rect.insetBy(dx: 30.0, dy: 0.0).size.width / 2, startAngle: .degrees(-5), endAngle: .degrees(180), clockwise: true)
-
-        return p.strokedPath(.init(lineWidth: 35))
     }
 }
 
