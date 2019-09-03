@@ -8,26 +8,31 @@
 
 import SwiftUI
 
-var outerColor: Color = .blue
-var midColor: Color = .black
-var innerColor: Color = .blue
+var outlineColors: [Color] = [.blue, .black, .blue]
 
-let lineWidth = CGFloat(integerLiteral: 10)
+let lineWidth = CGFloat(integerLiteral: 8)
 
 struct Badge : View {
+
     var body: some View {
-        
         ZStack {
-            Circle()
-                .stroke(outerColor, lineWidth: lineWidth)
-                .padding(10)
-            Circle()
-                .stroke(midColor, lineWidth: lineWidth)
-                .padding(20)
-            Circle()
-                .stroke(innerColor, lineWidth: lineWidth)
-                .padding(30)
+            ForEach((0...outlineColors.count - 1), id: \.self) { index in
+                Circle()
+                    .stroke(outlineColors[index], lineWidth: lineWidth)
+                    .padding(lineWidth * CGFloat(integerLiteral: index))
+            }
         }
+        .padding(10)
+    }
+}
+
+struct MyShape : Shape {
+    func path(in rect: CGRect) -> Path {
+        var p = Path()
+
+        p.addArc(center: CGPoint(x: rect.midX, y: rect.midY), radius: rect.insetBy(dx: 30.0, dy: 0.0).size.width / 2, startAngle: .degrees(-5), endAngle: .degrees(180), clockwise: true)
+
+        return p.strokedPath(.init(lineWidth: 35))
     }
 }
 
