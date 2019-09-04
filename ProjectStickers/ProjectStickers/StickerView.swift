@@ -11,7 +11,7 @@ import SwiftUI
 let outlineColors: [Color] = [.blue, .red, .white]
 
 var outlineWidth: CGFloat = 6.0
-var badgeFeatureWidth: CGFloat = 40.0
+var badgeFeatureStrokeWidth: CGFloat = 40.0
 
 // Not super pretty, but since SwiftUI draws outlines outward from the Shape's bounding rect,
 // we must calculate the padding when using strokes of different thickness
@@ -20,52 +20,64 @@ var totalOutlinePadding: CGFloat {
 }
 
 var badgeFeaturePadding: CGFloat {
-    return totalOutlinePadding + (badgeFeatureWidth / 2)
+    totalOutlinePadding + (badgeFeatureStrokeWidth / 2)
 }
 
-struct Badge : View {
+//var badgeLabel: some View {
+//    BadgeView()
+////        .padding(badgeFeaturePadding)
+//        .border(Color.red, width: 2)
+//}
+
+struct StickerView : View {
     var body: some View {
-        ZStack {
-            ForEach((0...outlineColors.count - 1), id: \.self) { index in
-                Circle()
-                    .stroke(outlineColors[index], lineWidth: outlineWidth)
-                    .padding(outlineWidth * CGFloat(integerLiteral: index))
+        VStack {
+            ZStack {
+                ForEach((0...outlineColors.count - 1), id: \.self) { index in
+                    Circle()
+                        .stroke(outlineColors[index], lineWidth: outlineWidth)
+                        .padding(outlineWidth * CGFloat(integerLiteral: index))
+                }
+                
+                BadgeLabel()
+                    .overlay(BadgeView())
+                //                    .border(Color.green, width: 2)
+                
+                HStack {
+                    Text("20")
+                        .frame(width: badgeFeatureStrokeWidth, height: 30, alignment: .center)                    
+                    Spacer()
+                    Text("19")
+                        .frame(width: badgeFeatureStrokeWidth, height: nil, alignment: .center)
+                }
+                .background(Color.white)
+                .padding(totalOutlinePadding)
             }
+            .aspectRatio(1, contentMode: .fit)
+            .padding(10)
+//            .overlay(badgeLabel)
             
-            Circle()
-                .stroke(Color.black, lineWidth: badgeFeatureWidth)
-                .padding(badgeFeaturePadding)
-            
-            HStack {
-                Text("20")
-                    .frame(width: badgeFeatureWidth, height: 30, alignment: .center)
-                Spacer()
-                Text("19")
-                    .frame(width: badgeFeatureWidth, height: nil, alignment: .center)
-            }
-            .background(Color.white)
-            .padding(totalOutlinePadding)
+            Spacer()
         }
-        .padding(10)
     }
 }
 
 #if DEBUG
 struct Badge_Previews : PreviewProvider {
     static var previews: some View {
-       Group {
-          Badge()
-            .previewDevice(PreviewDevice(rawValue: "iPhone SE"))
-            .previewDisplayName("iPhone SE")
-
-          Badge()
-            .previewDevice(PreviewDevice(rawValue: "iPhone XS Max"))
-            .previewDisplayName("iPhone XS Max")
-        
-            Badge()
+        Group {
+            StickerView()
+                .previewDevice(PreviewDevice(rawValue: "iPhone SE"))
+                .previewDisplayName("iPhone SE")
+            
+            StickerView()
+                .previewDevice(PreviewDevice(rawValue: "iPhone XS Max"))
+                .previewDisplayName("iPhone XS Max")
+            
+            StickerView()
                 .previewDevice(PreviewDevice(rawValue: "iPad Pro (12.9-inch) (3rd generation)"))
                 .previewDisplayName("iPad Pro (12.9-inch) (3rd generation)")
-       }
+        }
     }
 }
 #endif

@@ -16,6 +16,9 @@
 		B85388582319B236001E3ED7 /* ProjectStickersTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = B85388572319B236001E3ED7 /* ProjectStickersTests.swift */; };
 		B85388632319B236001E3ED7 /* ProjectStickersUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = B85388622319B236001E3ED7 /* ProjectStickersUITests.swift */; };
 		B85388712319B2BC001E3ED7 /* StickerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B85388702319B2BC001E3ED7 /* StickerView.swift */; };
+		B86C422023200F0400020DA0 /* BadgeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B86C421F23200F0400020DA0 /* BadgeView.swift */; };
+		B86C422223201E0E00020DA0 /* BadgeLabel.swift in Sources */ = {isa = PBXBuildFile; fileRef = B86C422123201E0E00020DA0 /* BadgeLabel.swift */; };
+		B86C42252320265800020DA0 /* BadgeLabelUIView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B86C42242320265800020DA0 /* BadgeLabelUIView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -51,6 +54,9 @@
 		B85388622319B236001E3ED7 /* ProjectStickersUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProjectStickersUITests.swift; sourceTree = "<group>"; };
 		B85388642319B236001E3ED7 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		B85388702319B2BC001E3ED7 /* StickerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StickerView.swift; sourceTree = "<group>"; };
+		B86C421F23200F0400020DA0 /* BadgeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BadgeView.swift; sourceTree = "<group>"; };
+		B86C422123201E0E00020DA0 /* BadgeLabel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BadgeLabel.swift; sourceTree = "<group>"; };
+		B86C42242320265800020DA0 /* BadgeLabelUIView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BadgeLabelUIView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -101,6 +107,7 @@
 		B853883F2319B233001E3ED7 /* ProjectStickers */ = {
 			isa = PBXGroup;
 			children = (
+				B86C42232320264300020DA0 /* BadgeLabel */,
 				B85388402319B233001E3ED7 /* AppDelegate.swift */,
 				B85388422319B233001E3ED7 /* SceneDelegate.swift */,
 				B85388442319B233001E3ED7 /* ContentView.swift */,
@@ -109,6 +116,7 @@
 				B853884B2319B235001E3ED7 /* LaunchScreen.storyboard */,
 				B853884E2319B235001E3ED7 /* Info.plist */,
 				B85388482319B235001E3ED7 /* Preview Content */,
+				B86C422123201E0E00020DA0 /* BadgeLabel.swift */,
 			);
 			path = ProjectStickers;
 			sourceTree = "<group>";
@@ -137,6 +145,15 @@
 				B85388642319B236001E3ED7 /* Info.plist */,
 			);
 			path = ProjectStickersUITests;
+			sourceTree = "<group>";
+		};
+		B86C42232320264300020DA0 /* BadgeLabel */ = {
+			isa = PBXGroup;
+			children = (
+				B86C421F23200F0400020DA0 /* BadgeView.swift */,
+				B86C42242320265800020DA0 /* BadgeLabelUIView.swift */,
+			);
+			path = BadgeLabel;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -270,9 +287,12 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				B86C422223201E0E00020DA0 /* BadgeLabel.swift in Sources */,
 				B85388412319B233001E3ED7 /* AppDelegate.swift in Sources */,
+				B86C422023200F0400020DA0 /* BadgeView.swift in Sources */,
 				B85388712319B2BC001E3ED7 /* StickerView.swift in Sources */,
 				B85388432319B233001E3ED7 /* SceneDelegate.swift in Sources */,
+				B86C42252320265800020DA0 /* BadgeLabelUIView.swift in Sources */,
 				B85388452319B233001E3ED7 /* ContentView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
