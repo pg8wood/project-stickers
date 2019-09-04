@@ -38,8 +38,8 @@ class BadgeLabelUIView: UILabel {
         // drawing done from this UIView will be clipped!
         let rect = rect.insetBy(dx: badgeFeaturePadding, dy: badgeFeaturePadding)
 
-        centreArcPerpendicular(text: "Hello world!", context: context, radius: (rect.size.width / 2), centerTextAngle: CGFloat(Double.pi / 2), colour: .white, font: UIFont.systemFont(ofSize: 16), clockwise: true)
-        centreArcPerpendicular(text: "Project stickers are awesome", context: context, radius: -rect.size.width / 2, centerTextAngle: CGFloat(Double.pi / 2), colour: UIColor.white, font: UIFont.systemFont(ofSize: 16), clockwise: true)
+        centreArcPerpendicular(text: "HBO LIVE", context: context, radius: (rect.size.width / 2), centerTextAngle: CGFloat(Double.pi / 2), colour: .white, font: UIFont(name: "MyriadPro-Semibold", size: 25)!, clockwise: true)
+        centreArcPerpendicular(text: "PROJECT STICKERS ARE AWESOME", context: context, radius: -rect.size.width / 2, centerTextAngle: CGFloat(Double.pi / 2), colour: UIColor.white, font: UIFont(name: "MyriadPro-Semibold", size: 25)!, clockwise: true)
     }
     
     private func setTopLabel(text: String) {
