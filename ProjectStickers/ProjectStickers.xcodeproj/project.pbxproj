@@ -19,6 +19,7 @@
 		B86C422223201E0E00020DA0 /* BadgeLabel.swift in Sources */ = {isa = PBXBuildFile; fileRef = B86C422123201E0E00020DA0 /* BadgeLabel.swift */; };
 		B86C42252320265800020DA0 /* BadgeLabelUIView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B86C42242320265800020DA0 /* BadgeLabelUIView.swift */; };
 		B8ECE92623203E8D00656778 /* MYRIADPRO-SEMIBOLD.OTF in Resources */ = {isa = PBXBuildFile; fileRef = B8ECE92523203E8D00656778 /* MYRIADPRO-SEMIBOLD.OTF */; };
+		B8ECE92823203F8400656778 /* UIFontExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = B8ECE92723203F8400656778 /* UIFontExtensions.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -57,6 +58,7 @@
 		B86C422123201E0E00020DA0 /* BadgeLabel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BadgeLabel.swift; sourceTree = "<group>"; };
 		B86C42242320265800020DA0 /* BadgeLabelUIView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BadgeLabelUIView.swift; sourceTree = "<group>"; };
 		B8ECE92523203E8D00656778 /* MYRIADPRO-SEMIBOLD.OTF */ = {isa = PBXFileReference; lastKnownFileType = file; path = "MYRIADPRO-SEMIBOLD.OTF"; sourceTree = "<group>"; };
+		B8ECE92723203F8400656778 /* UIFontExtensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIFontExtensions.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -107,6 +109,7 @@
 		B853883F2319B233001E3ED7 /* ProjectStickers */ = {
 			isa = PBXGroup;
 			children = (
+				B8ECE92923203F8A00656778 /* Extensions */,
 				B86C42232320264300020DA0 /* BadgeLabel */,
 				B85388402319B233001E3ED7 /* AppDelegate.swift */,
 				B85388422319B233001E3ED7 /* SceneDelegate.swift */,
@@ -154,6 +157,14 @@
 				B86C42242320265800020DA0 /* BadgeLabelUIView.swift */,
 			);
 			path = BadgeLabel;
+			sourceTree = "<group>";
+		};
+		B8ECE92923203F8A00656778 /* Extensions */ = {
+			isa = PBXGroup;
+			children = (
+				B8ECE92723203F8400656778 /* UIFontExtensions.swift */,
+			);
+			path = Extensions;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -290,6 +301,7 @@
 			files = (
 				B86C422223201E0E00020DA0 /* BadgeLabel.swift in Sources */,
 				B85388412319B233001E3ED7 /* AppDelegate.swift in Sources */,
+				B8ECE92823203F8400656778 /* UIFontExtensions.swift in Sources */,
 				B86C422023200F0400020DA0 /* BadgeView.swift in Sources */,
 				B85388712319B2BC001E3ED7 /* StickerView.swift in Sources */,
 				B85388432319B233001E3ED7 /* SceneDelegate.swift in Sources */,

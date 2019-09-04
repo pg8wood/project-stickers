@@ -42,10 +42,12 @@ struct StickerView : View {
                 
                 HStack {
                     Text("20")
-                        .frame(width: badgeFeatureStrokeWidth, height: 30, alignment: .center)                    
+                        .frame(width: badgeFeatureStrokeWidth + 1, height: 30, alignment: .center)
+                        .font(.custom("MyriadPro-Semibold", size: 22))
                     Spacer()
                     Text("19")
-                        .frame(width: badgeFeatureStrokeWidth, height: nil, alignment: .center)
+                        .frame(width: badgeFeatureStrokeWidth + 1, height: 30, alignment: .center)
+                        .font(.custom("MyriadPro-Semibold", size: 22))
                 }
                 .background(Color.white)
                 .padding(totalOutlinePadding)
