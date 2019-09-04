@@ -42,19 +42,30 @@ struct StickerView : View {
                 
                 HStack {
                     Text("20")
-                        .frame(width: badgeFeatureStrokeWidth + 1, height: 30, alignment: .center)
+                        .frame(width: badgeFeatureStrokeWidth + 1, height: 35, alignment: .center)
                         .font(.custom("MyriadPro-Semibold", size: 22))
+                        .foregroundColor(.black)
                     Spacer()
                     Text("19")
-                        .frame(width: badgeFeatureStrokeWidth + 1, height: 30, alignment: .center)
+                        .frame(width: badgeFeatureStrokeWidth + 1, height: 35, alignment: .center)
                         .font(.custom("MyriadPro-Semibold", size: 22))
+                        .foregroundColor(.black)
                 }
                 .background(Color.white)
                 .padding(totalOutlinePadding)
+                
+                // TODO use state to conditionally add a tiny bit of padding between like the HBO sticker's space (if desired)
+                Image("wt_horizontal")
+                    .resizable()
+                    .aspectRatio(contentMode: .fit)
+                    .frame(maxWidth: 225, maxHeight: 225) // TODO this isn't great on iPad
+                    .clipped()
+                    .padding(badgeFeaturePadding + badgeFeatureStrokeWidth / 2)
             }
             .aspectRatio(1, contentMode: .fit)
             .padding(10)
             .overlay(badgeView)
+            .frame(width: 500)
             
             Spacer()
         }

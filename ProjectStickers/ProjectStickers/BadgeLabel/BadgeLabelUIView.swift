@@ -39,7 +39,7 @@ class BadgeLabelUIView: UILabel {
         let rect = rect.insetBy(dx: badgeFeaturePadding, dy: badgeFeaturePadding)
 
         centreArcPerpendicular(text: "HELLO WORLD", context: context, radius: (rect.size.width / 2), centerTextAngle: CGFloat(Double.pi / 2), colour: .white, font: .myriadSemiBold(25), clockwise: true)
-        centreArcPerpendicular(text: "PROJECT STICKERS ARE AWESOME", context: context, radius: -rect.size.width / 2, centerTextAngle: CGFloat(Double.pi / 2), colour: UIColor.white, font: .myriadSemiBold(25), clockwise: true)
+        centreArcPerpendicular(text: "PROJECT STICKERS ARE 🔥", context: context, radius: -rect.size.width / 2, centerTextAngle: CGFloat(Double.pi / 2), colour: UIColor.white, font: .myriadSemiBold(25), clockwise: true)
     }
     
     private func setTopLabel(text: String) {

@@ -116,10 +116,10 @@
 				B85388702319B2BC001E3ED7 /* StickerView.swift */,
 				B85388462319B235001E3ED7 /* Assets.xcassets */,
 				B853884B2319B235001E3ED7 /* LaunchScreen.storyboard */,
-				B8ECE92523203E8D00656778 /* MYRIADPRO-SEMIBOLD.OTF */,
 				B853884E2319B235001E3ED7 /* Info.plist */,
-				B85388482319B235001E3ED7 /* Preview Content */,
 				B86C422123201E0E00020DA0 /* BadgeLabel.swift */,
+				B85388482319B235001E3ED7 /* Preview Content */,
+				B8F3914023204CC200F62FF8 /* Resources */,
 			);
 			path = ProjectStickers;
 			sourceTree = "<group>";
@@ -165,6 +165,14 @@
 				B8ECE92723203F8400656778 /* UIFontExtensions.swift */,
 			);
 			path = Extensions;
+			sourceTree = "<group>";
+		};
+		B8F3914023204CC200F62FF8 /* Resources */ = {
+			isa = PBXGroup;
+			children = (
+				B8ECE92523203E8D00656778 /* MYRIADPRO-SEMIBOLD.OTF */,
+			);
+			path = Resources;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
