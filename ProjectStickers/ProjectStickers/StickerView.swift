@@ -23,11 +23,10 @@ var badgeFeaturePadding: CGFloat {
     totalOutlinePadding + (badgeFeatureStrokeWidth / 2)
 }
 
-//var badgeLabel: some View {
-//    BadgeView()
-////        .padding(badgeFeaturePadding)
-//        .border(Color.red, width: 2)
-//}
+var badgeLabel: some View {
+    BadgeView()
+        .padding(badgeFeatureStrokeWidth / 3) // ensure the text runs through the center of the badge stroke
+}
 
 struct StickerView : View {
     var body: some View {
@@ -40,8 +39,8 @@ struct StickerView : View {
                 }
                 
                 BadgeLabel()
-                    .overlay(BadgeView())
-                //                    .border(Color.green, width: 2)
+                    
+                                    .border(Color.green, width: 2)
                 
                 HStack {
                     Text("20")
@@ -55,7 +54,7 @@ struct StickerView : View {
             }
             .aspectRatio(1, contentMode: .fit)
             .padding(10)
-//            .overlay(badgeLabel)
+            .overlay(badgeLabel)
             
             Spacer()
         }
