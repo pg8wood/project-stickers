@@ -13,62 +13,26 @@ let outlineColors: [Color] = [.blue, .red, .white]
 var outlineWidth: CGFloat = 6.0
 var badgeFeatureStrokeWidth: CGFloat = 40.0
 
-// Not super pretty, but since SwiftUI draws outlines outward from the Shape's bounding rect,
-// we must calculate the padding when using strokes of different thickness
-var totalOutlinePadding: CGFloat {
-    outlineWidth * CGFloat(integerLiteral: outlineColors.count) - (outlineWidth / 2)
-}
-
-var badgeFeaturePadding: CGFloat {
-    totalOutlinePadding + (badgeFeatureStrokeWidth / 2)
-}
-
-var badgeView: some View {
-    BadgeView()
-        .padding(badgeFeatureStrokeWidth / 3) // ensure the text runs through the center of the badge stroke
-}
-
 struct StickerView : View {
     var body: some View {
-        VStack {
-            ZStack {
-                ForEach((0...outlineColors.count - 1), id: \.self) { index in
-                    Circle()
-                        .stroke(outlineColors[index], lineWidth: outlineWidth)
-                        .padding(outlineWidth * CGFloat(integerLiteral: index))
-                }
-                
-                BadgeLabel()
-                
-                HStack {
-                    Text("20")
-                        .frame(width: badgeFeatureStrokeWidth + 1, height: 35, alignment: .center)
-                        .font(.custom("MyriadPro-Semibold", size: 22))
-                        .foregroundColor(.black)
-                    Spacer()
-                    Text("19")
-                        .frame(width: badgeFeatureStrokeWidth + 1, height: 35, alignment: .center)
-                        .font(.custom("MyriadPro-Semibold", size: 22))
-                        .foregroundColor(.black)
-                }
-                .background(Color.white)
-                .padding(totalOutlinePadding)
-                
-                // TODO use state to conditionally add a tiny bit of padding between like the HBO sticker's space (if desired)
-                Image("wt_horizontal")
-                    .resizable()
-                    .aspectRatio(contentMode: .fit)
-                    .frame(maxWidth: 225, maxHeight: 225) // TODO this size isn't quite right on smaller devices. How to be adaptive?
-                    .clipped()
-                    .padding(badgeFeaturePadding + badgeFeatureStrokeWidth / 2)
-            }
-            .aspectRatio(1, contentMode: .fit)
-            .padding(10)
-            .overlay(badgeView)
-            .frame(width: 375)
-            
-            Spacer()
-        }
+        Color.blue.clipShape(Circle())
+            .frame(width: 250, height: 250)
+            .overlay(Circle()
+                .stroke(Color.black, lineWidth: badgeFeatureStrokeWidth).padding(badgeFeatureStrokeWidth / 2))
+            .overlay(BadgeView(drawingRectInsets: badgeFeatureStrokeWidth / 2).padding(5))
+            .overlay(Image("wt_horizontal")
+                .resizable()
+                .aspectRatio(contentMode: .fit)
+                .padding(50)
+                .frame(width: 250, height: 250))
+            .overlay(Circle()
+                    .stroke(Color.white, lineWidth: outlineWidth))
+                    .overlay(Circle()
+                             .stroke(Color.red, lineWidth: outlineWidth)
+                             .padding(-outlineWidth)
+                             .overlay(Circle()
+                                      .stroke(Color.blue, lineWidth: outlineWidth)
+                                      .padding(-2 * outlineWidth)))
     }
 }
 

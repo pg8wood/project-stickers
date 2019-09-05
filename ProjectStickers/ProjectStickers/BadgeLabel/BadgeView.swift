@@ -9,20 +9,39 @@
 import SwiftUI
 import UIKit
 
-struct BadgeView : View {
-
-    var body: some View {
-        Test()
+struct BadgeView: UIViewRepresentable {
+    let drawingRectInsets: CGFloat!
+    
+    init(drawingRectInsets: CGFloat = 0) {
+        self.drawingRectInsets = drawingRectInsets
     }
-}
-
-struct Test: UIViewRepresentable {
-    func updateUIView(_ uiView: BadgeLabelUIView, context: UIViewRepresentableContext<Test>) {
+    
+    func updateUIView(_ uiView: BadgeLabelUIView, context: UIViewRepresentableContext<BadgeView>) {
         // nothing to do
     }
 
     
     func makeUIView(context: Context) -> BadgeLabelUIView {
-        return BadgeLabelUIView()
+        return BadgeLabelUIView(drawingRectInsets: drawingRectInsets)
     }
 }
+
+#if DEBUG
+struct BadgeLabelView_Previews : PreviewProvider {
+    static var previews: some View {
+        Group {
+            BadgeView()
+                .previewDevice(PreviewDevice(rawValue: "iPhone SE"))
+                .previewDisplayName("iPhone SE")
+            
+            BadgeView()
+                .previewDevice(PreviewDevice(rawValue: "iPhone XS Max"))
+                .previewDisplayName("iPhone XS Max")
+            
+            BadgeView()
+                .previewDevice(PreviewDevice(rawValue: "iPad Pro (12.9-inch) (3rd generation)"))
+                .previewDisplayName("iPad Pro (12.9-inch) (3rd generation)")
+        }
+    }
+}
+#endif
