@@ -58,14 +58,14 @@ struct StickerView : View {
                 Image("wt_horizontal")
                     .resizable()
                     .aspectRatio(contentMode: .fit)
-                    .frame(maxWidth: 225, maxHeight: 225) // TODO this isn't great on iPad
+                    .frame(maxWidth: 225, maxHeight: 225) // TODO this size isn't quite right on smaller devices. How to be adaptive?
                     .clipped()
                     .padding(badgeFeaturePadding + badgeFeatureStrokeWidth / 2)
             }
             .aspectRatio(1, contentMode: .fit)
             .padding(10)
             .overlay(badgeView)
-            .frame(width: 500)
+            .frame(width: 375)
             
             Spacer()
         }

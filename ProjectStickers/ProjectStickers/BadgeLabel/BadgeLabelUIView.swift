@@ -8,6 +8,7 @@
 
 import UIKit
 
+// TODO: Add some more documentation, update spelling to American English
 // Taken almost entirely from this wonderful answer: https://stackoverflow.com/questions/32771864/draw-text-along-circular-path-in-swift-for-ios
 class BadgeLabelUIView: UILabel {
 
@@ -41,12 +42,7 @@ class BadgeLabelUIView: UILabel {
         centreArcPerpendicular(text: "HELLO WORLD", context: context, radius: (rect.size.width / 2), centerTextAngle: CGFloat(Double.pi / 2), colour: .white, font: .myriadSemiBold(25), clockwise: true)
         centreArcPerpendicular(text: "PROJECT STICKERS ARE 🔥", context: context, radius: -rect.size.width / 2, centerTextAngle: CGFloat(Double.pi / 2), colour: UIColor.white, font: .myriadSemiBold(25), clockwise: true)
     }
-    
-    private func setTopLabel(text: String) {
-        
-    }
 
-    // TODO make documentation. Say angle uses radians
     func centreArcPerpendicular(text str: String, context: CGContext, radius r: CGFloat, centerTextAngle theta: CGFloat, colour c: UIColor, font: UIFont, clockwise: Bool){
         // *******************************************************
         // This draws the String str around an arc of radius r,
