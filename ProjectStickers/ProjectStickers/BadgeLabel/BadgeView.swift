@@ -11,6 +11,7 @@ import UIKit
 
 struct BadgeView: UIViewRepresentable {
     let drawingRectInsets: CGFloat!
+    let font: UIFont = .myriadSemiBold(25)
     
     init(drawingRectInsets: CGFloat = 0) {
         self.drawingRectInsets = drawingRectInsets
@@ -22,7 +23,7 @@ struct BadgeView: UIViewRepresentable {
 
     
     func makeUIView(context: Context) -> BadgeLabelUIView {
-        return BadgeLabelUIView(drawingRectInsets: drawingRectInsets)
+        return BadgeLabelUIView(font: font)
     }
 }
 

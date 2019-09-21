@@ -13,14 +13,23 @@ import UIKit
 class BadgeLabelUIView: UILabel {
     var drawingRectInsets: CGFloat = .zero
     
+    var labelFont: UIFont!
+    
+    init(font: UIFont) {
+        self.labelFont = font
+        super.init(frame:.zero)
+    }
+    
     init(drawingRectInsets: CGFloat) {
+        labelFont = UIFont.systemFont(ofSize: 25)
         super.init(frame: .zero)
         self.drawingRectInsets = drawingRectInsets
+        
     }
 
     override init(frame: CGRect) {
+        labelFont = UIFont.systemFont(ofSize: 25)
         super.init(frame: frame)
-        sharedInit()
     }
 
     required init(coder aDecoder: NSCoder)  {
@@ -29,8 +38,7 @@ class BadgeLabelUIView: UILabel {
     }
     
     func sharedInit() {
-        superview?.clipsToBounds = false
-        superview?.layer.masksToBounds = false
+        labelFont = UIFont.systemFont(ofSize: 25)
     }
     
     override func draw(_ rect: CGRect) {
@@ -41,12 +49,11 @@ class BadgeLabelUIView: UILabel {
         context.translateBy(x: size.width / 2, y: size.height / 2)
         context.scaleBy(x: 1, y: -1)
         
-        // Inset the drawing rect by the same padding of its parent SwiftUI View, otherwise the
-        // drawing done from this UIView will be clipped!
-        let rect = rect.insetBy(dx: drawingRectInsets, dy: drawingRectInsets)
+        // Inset the drawing rect by the font line height otherwise the drawing done from this UIView will be clipped!
+        let rect = rect.insetBy(dx: font.lineHeight, dy: font.lineHeight)
 
-        centreArcPerpendicular(text: "HELLO WORLD", context: context, radius: (rect.size.width / 2), centerTextAngle: CGFloat(Double.pi / 2), colour: .white, font: .myriadSemiBold(25), clockwise: true)
-        centreArcPerpendicular(text: "PROJECT STICKERS ARE 🔥", context: context, radius: -rect.size.width / 2, centerTextAngle: CGFloat(Double.pi / 2), colour: UIColor.white, font: .myriadSemiBold(25), clockwise: true)
+        centreArcPerpendicular(text: "HELLO WORLD", context: context, radius: (rect.size.width / 2), centerTextAngle: CGFloat(Double.pi / 2), colour: .white, font: labelFont, clockwise: true)
+        centreArcPerpendicular(text: "PROJECT STICKERS ARE 🔥", context: context, radius: -rect.size.width / 2, centerTextAngle: CGFloat(Double.pi / 2), colour: UIColor.white, font: labelFont, clockwise: true)
     }
 
     func centreArcPerpendicular(text str: String, context: CGContext, radius r: CGFloat, centerTextAngle theta: CGFloat, colour c: UIColor, font: UIFont, clockwise: Bool){

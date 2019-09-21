@@ -7,6 +7,9 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		B84198952336CE0B0092ECD1 /* UIViewExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = B84198942336CE0B0092ECD1 /* UIViewExtensions.swift */; };
+		B84198972336CE7D0092ECD1 /* HomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B84198962336CE7C0092ECD1 /* HomeViewController.swift */; };
+		B84198992336D7A00092ECD1 /* ActivityView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B84198982336D7A00092ECD1 /* ActivityView.swift */; };
 		B85388412319B233001E3ED7 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = B85388402319B233001E3ED7 /* AppDelegate.swift */; };
 		B85388432319B233001E3ED7 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = B85388422319B233001E3ED7 /* SceneDelegate.swift */; };
 		B85388472319B235001E3ED7 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = B85388462319B235001E3ED7 /* Assets.xcassets */; };
@@ -39,6 +42,9 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		B84198942336CE0B0092ECD1 /* UIViewExtensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIViewExtensions.swift; sourceTree = "<group>"; };
+		B84198962336CE7C0092ECD1 /* HomeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeViewController.swift; sourceTree = "<group>"; };
+		B84198982336D7A00092ECD1 /* ActivityView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ActivityView.swift; sourceTree = "<group>"; };
 		B853883D2319B233001E3ED7 /* ProjectStickers.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = ProjectStickers.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		B85388402319B233001E3ED7 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		B85388422319B233001E3ED7 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -111,7 +117,9 @@
 				B86C42232320264300020DA0 /* BadgeLabel */,
 				B85388402319B233001E3ED7 /* AppDelegate.swift */,
 				B85388422319B233001E3ED7 /* SceneDelegate.swift */,
+				B84198962336CE7C0092ECD1 /* HomeViewController.swift */,
 				B85388702319B2BC001E3ED7 /* StickerView.swift */,
+				B84198982336D7A00092ECD1 /* ActivityView.swift */,
 				B85388462319B235001E3ED7 /* Assets.xcassets */,
 				B853884B2319B235001E3ED7 /* LaunchScreen.storyboard */,
 				B853884E2319B235001E3ED7 /* Info.plist */,
@@ -160,6 +168,7 @@
 			isa = PBXGroup;
 			children = (
 				B8ECE92723203F8400656778 /* UIFontExtensions.swift */,
+				B84198942336CE0B0092ECD1 /* UIViewExtensions.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -305,10 +314,13 @@
 			buildActionMask = 2147483647;
 			files = (
 				B85388412319B233001E3ED7 /* AppDelegate.swift in Sources */,
+				B84198952336CE0B0092ECD1 /* UIViewExtensions.swift in Sources */,
 				B8ECE92823203F8400656778 /* UIFontExtensions.swift in Sources */,
+				B84198972336CE7D0092ECD1 /* HomeViewController.swift in Sources */,
 				B86C422023200F0400020DA0 /* BadgeView.swift in Sources */,
 				B85388712319B2BC001E3ED7 /* StickerView.swift in Sources */,
 				B85388432319B233001E3ED7 /* SceneDelegate.swift in Sources */,
+				B84198992336D7A00092ECD1 /* ActivityView.swift in Sources */,
 				B86C42252320265800020DA0 /* BadgeLabelUIView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
