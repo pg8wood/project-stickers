@@ -10,26 +10,43 @@ import UIKit
 
 // TODO: Add some more documentation, update spelling to American English
 // Taken almost entirely from this wonderful answer: https://stackoverflow.com/questions/32771864/draw-text-along-circular-path-in-swift-for-ios
+
+import UIKit
+
+@IBDesignable
 class BadgeLabelUIView: UILabel {
-    var drawingRectInsets: CGFloat = .zero
-    
-    var labelFont: UIFont!
+    // *******************************************************
+    // DEFINITIONS (Because I'm not brilliant and I'll forget most this tomorrow.)
+    // Radius: A straight line from the center to the circumference of a circle.
+    // Circumference: The distance around the edge (outer line) the circle.
+    // Arc: A part of the circumference of a circle. Like a length or section of the circumference.
+    // Theta: A label or name that represents an angle.
+    // Subtend: A letter has a width. If you put the letter on the circumference, the letter's width
+    //          gives you an arc. So now that you have an arc (a length on the circumference) you can
+    //          use that to get an angle. You get an angle when you draw a line from the center of the
+    //          circle to each end point of your arc. So "subtend" means to get an angle from an arc.
+    // Chord: A line segment connecting two points on a curve. If you have an arc then there is a
+    //          start point and an end point. If you draw a straight line from start point to end point
+    //          then you have a "chord".
+    // sin: (Super simple/incomplete definition) Or "sine" takes an angle in degrees and gives you a number.
+    // asin: Or "asine" takes a number and gives you an angle in degrees. Opposite of sine.
+    //          More complete definition: http://www.mathsisfun.com/sine-cosine-tangent.html
+    // cosine: Also takes an angle in degrees and gives you another number from using the two radiuses (radii).
+    // *******************************************************
+
+    @IBInspectable var angle: CGFloat = 1.6
+    @IBInspectable var clockwise: Bool = true
+        
+    var largestLetterFontHeight: CGFloat = 0
     
     init(font: UIFont) {
-        self.labelFont = font
         super.init(frame:.zero)
-    }
-    
-    init(drawingRectInsets: CGFloat) {
-        labelFont = UIFont.systemFont(ofSize: 25)
-        super.init(frame: .zero)
-        self.drawingRectInsets = drawingRectInsets
-        
+        self.font = font
     }
 
     override init(frame: CGRect) {
-        labelFont = UIFont.systemFont(ofSize: 25)
         super.init(frame: frame)
+         font = UIFont.systemFont(ofSize: 25)
     }
 
     required init(coder aDecoder: NSCoder)  {
@@ -38,59 +55,52 @@ class BadgeLabelUIView: UILabel {
     }
     
     func sharedInit() {
-        labelFont = UIFont.systemFont(ofSize: 25)
+        font = UIFont.systemFont(ofSize: 25)
     }
-    
+
     override func draw(_ rect: CGRect) {
-        guard let context = UIGraphicsGetCurrentContext() else { return }
-        
-        let size = self.bounds.size
-        
-        context.translateBy(x: size.width / 2, y: size.height / 2)
-        context.scaleBy(x: 1, y: -1)
-        
-        // Inset the drawing rect by the font line height otherwise the drawing done from this UIView will be clipped!
-        let rect = rect.insetBy(dx: font.lineHeight, dy: font.lineHeight)
-
-        centreArcPerpendicular(text: "HELLO WORLD", context: context, radius: (rect.size.width / 2), centerTextAngle: CGFloat(Double.pi / 2), colour: .white, font: labelFont, clockwise: true)
-        centreArcPerpendicular(text: "PROJECT STICKERS ARE 🔥", context: context, radius: -rect.size.width / 2, centerTextAngle: CGFloat(Double.pi / 2), colour: UIColor.white, font: labelFont, clockwise: true)
+        centreArcPerpendicular()
     }
+    /**
+    This draws the self.text around an arc of radius r,
+    with the text centred at polar angle theta
+    */
+    func centreArcPerpendicular() {
+        guard let context = UIGraphicsGetCurrentContext() else { return }
+        let string = text ?? ""
+        let size   = bounds.size
+        context.translateBy(x: size.width / 2, y: size.height / 2)
 
-    func centreArcPerpendicular(text str: String, context: CGContext, radius r: CGFloat, centerTextAngle theta: CGFloat, colour c: UIColor, font: UIFont, clockwise: Bool){
-        // *******************************************************
-        // This draws the String str around an arc of radius r,
-        // with the text centred at polar angle theta
-        // *******************************************************
+        let radius = getRadiusForLabel()
+        let l = string.count
+        let attributes = [NSAttributedString.Key.font : self.font!]
 
-        let characters: [String] = str.map { String($0) } // An array of single character strings, each character in str
-        let l = characters.count
-        let attributes = [NSAttributedString.Key.font: font]
-
+        let characters: [String] = string.map { String($0) } // An array of single character strings, each character in str
         var arcs: [CGFloat] = [] // This will be the arcs subtended by each character
         var totalArc: CGFloat = 0 // ... and the total arc subtended by the string
 
         // Calculate the arc subtended by each letter and their total
         for i in 0 ..< l {
-            arcs += [chordToArc(characters[i].size(withAttributes: attributes).width, radius: r)]
+            arcs += [chordToArc(characters[i].size(withAttributes: attributes).width, radius: radius)]
             totalArc += arcs[i]
         }
 
         // Are we writing clockwise (right way up at 12 o'clock, upside down at 6 o'clock)
         // or anti-clockwise (right way up at 6 o'clock)?
         let direction: CGFloat = clockwise ? -1 : 1
-        let slantCorrection: CGFloat = clockwise ? -.pi / 2 : .pi / 2
+        let slantCorrection = clockwise ? -CGFloat.pi/2 : CGFloat.pi/2
 
         // The centre of the first character will then be at
         // thetaI = theta - totalArc / 2 + arcs[0] / 2
         // But we add the last term inside the loop
-        var thetaI = theta - direction * totalArc / 2
+        var thetaI = angle - direction * totalArc / 2
 
         for i in 0 ..< l {
             thetaI += direction * arcs[i] / 2
-            // Call centerText with each character in turn.
+            // Call centre with each character in turn.
             // Remember to add +/-90º to the slantAngle otherwise
             // the characters will "stack" round the arc rather than "text flow"
-            centre(text: characters[i], context: context, radius: r, angle: thetaI, colour: c, font: font, slantAngle: thetaI + slantCorrection)
+            centre(text: characters[i], context: context, radius: radius, angle: thetaI, slantAngle: thetaI + slantCorrection)
             // The centre of the next character will then be at
             // thetaI = thetaI + arcs[i] / 2 + arcs[i + 1] / 2
             // but again we leave the last term to the start of the next loop...
@@ -105,21 +115,21 @@ class BadgeLabelUIView: UILabel {
         return 2 * asin(chord / (2 * radius))
     }
 
-    func centre(text str: String, context: CGContext, radius r: CGFloat, angle theta: CGFloat, colour c: UIColor, font: UIFont, slantAngle: CGFloat) {
-        // *******************************************************
-        // This draws the String str centred at the position
-        // specified by the polar coordinates (r, theta)
-        // i.e. the x= r * cos(theta) y= r * sin(theta)
-        // and rotated by the angle slantAngle
-        // *******************************************************
-
+    /**
+    This draws the String str centred at the position
+    specified by the polar coordinates (r, theta)
+    i.e. the x= r * cos(theta) y= r * sin(theta)
+    and rotated by the angle slantAngle
+    */
+    func centre(text str: String, context: CGContext, radius r:CGFloat, angle theta: CGFloat, slantAngle: CGFloat) {
         // Set the text attributes
-        let attributes = [NSAttributedString.Key.foregroundColor: c, NSAttributedString.Key.font: font]
-        //let attributes = [NSForegroundColorAttributeName: c, NSFontAttributeName: font]
+        let attributes : [NSAttributedString.Key : Any] = [
+            NSAttributedString.Key.foregroundColor: textColor!,
+//            NSAttributedString.Key.backgroundColor: UIColor.gray,
+            NSAttributedString.Key.font: font!
+            ]
         // Save the context
         context.saveGState()
-        // Undo the inversion of the Y-axis (or the text goes backwards!)
-        context.scaleBy(x: 1, y: -1)
         // Move the origin to the centre of the text (negating the y-axis manually)
         context.translateBy(x: r * cos(theta), y: -(r * sin(theta)))
         // Rotate the coordinate system
@@ -127,11 +137,27 @@ class BadgeLabelUIView: UILabel {
         // Calculate the width of the text
         let offset = str.size(withAttributes: attributes)
         // Move the origin by half the size of the text
-        context.translateBy (x: -offset.width / 2, y: -offset.height / 2) // Move the origin to the centre of the text (negating the y-axis manually)
+//        context.translateBy(x: -offset.width / 2, y: -offset.height / 2) // Move the origin to the centre of the text (negating the y-axis manually)
+        
+        // OG implementation moves by half size, instead move by whole size of text
+        context.translateBy(x: -offset.width / 2, y: -offset.height / 2)
+        
         // Draw the text
         str.draw(at: CGPoint(x: 0, y: 0), withAttributes: attributes)
         // Restore the context
         context.restoreGState()
+    }
+
+    func getRadiusForLabel() -> CGFloat {
+        // Imagine the bounds of this label will have a circle inside it.
+        // The circle will be as big as the smallest width or height of this label.
+        // But we need to fit the size of the font on the circle so make the circle a little
+        // smaller so the text does not get drawn outside the bounds of the circle.
+        let smallestWidthOrHeight = min(bounds.size.height, bounds.size.width)
+        let heightOfFont = text?.size(withAttributes: [NSAttributedString.Key.font: self.font]).height ?? 0
+
+        // Dividing the smallestWidthOrHeight by 2 gives us the radius for the circle.
+        return (smallestWidthOrHeight/2) - heightOfFont + 10
     }
 }
 

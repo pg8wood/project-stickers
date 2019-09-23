@@ -10,20 +10,21 @@ import SwiftUI
 import UIKit
 
 struct BadgeView: UIViewRepresentable {
-    let drawingRectInsets: CGFloat!
-    let font: UIFont = .myriadSemiBold(25)
-    
-    init(drawingRectInsets: CGFloat = 0) {
-        self.drawingRectInsets = drawingRectInsets
+    var fontHeight: CGFloat {
+        return UIFont.myriadSemiBold(25).lineHeight
+//        return label.fontHeight
     }
+    
+    private var label: BadgeLabelUIView = BadgeLabelUIView(font: .myriadSemiBold(25))
     
     func updateUIView(_ uiView: BadgeLabelUIView, context: UIViewRepresentableContext<BadgeView>) {
         // nothing to do
     }
 
-    
     func makeUIView(context: Context) -> BadgeLabelUIView {
-        return BadgeLabelUIView(font: font)
+        label.text = "test hello this is a label".uppercased()
+        label.textColor = .white
+        return label
     }
 }
 

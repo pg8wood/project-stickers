@@ -39,15 +39,15 @@ struct StickerView : View {
             // Figure out if a circle with the text overlayed is better or if
             // using the badgeView with a background shape is better.
             // Hardest part right now is getting the text centered within the outline
-            Color.black
-                .clipShape(Circle())
-                .frame(width: badgeFeatureDiameter, height: badgeFeatureDiameter)
+//            Color.black
+//                .clipShape(Circle())
+//                .frame(width: badgeFeatureDiameter, height: badgeFeatureDiameter)
             badgeView.frame(width: badgeFeatureDiameter, height: badgeFeatureDiameter)
-//                .background(Color.black.clipShape(Circle()))
+                .background(Color.black.clipShape(Circle()))
             Color.blue
                 .clipShape(Circle())
                 // TODO need to figure out what the insets here need to be
-                .frame(width: badgeFeatureDiameter - badgeView.font.lineHeight, height: badgeFeatureDiameter - badgeView.font.lineHeight)
+                .frame(width: badgeFeatureDiameter - 2 * badgeView.fontHeight, height: badgeFeatureDiameter - 2 * badgeView.fontHeight)
             
             // End TODO
 
