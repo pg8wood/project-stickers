@@ -10,18 +10,18 @@ import SwiftUI
 import UIKit
 
 struct BadgeView: UIViewRepresentable {
+    private var font = UIFont.myriadSemiBold(15)
+    
     var fontHeight: CGFloat {
-        return UIFont.myriadSemiBold(25).lineHeight
-//        return label.fontHeight
+        return font.lineHeight
     }
-    
-    private var label: BadgeLabelUIView = BadgeLabelUIView(font: .myriadSemiBold(25))
-    
+        
     func updateUIView(_ uiView: BadgeLabelUIView, context: UIViewRepresentableContext<BadgeView>) {
         // nothing to do
     }
 
     func makeUIView(context: Context) -> BadgeLabelUIView {
+        let label = BadgeLabelUIView(font: font)
         label.text = "test hello this is a label".uppercased()
         label.textColor = .white
         return label

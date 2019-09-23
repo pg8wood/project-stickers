@@ -36,9 +36,7 @@ class BadgeLabelUIView: UILabel {
 
     @IBInspectable var angle: CGFloat = 1.6
     @IBInspectable var clockwise: Bool = true
-        
-    var largestLetterFontHeight: CGFloat = 0
-    
+            
     init(font: UIFont) {
         super.init(frame:.zero)
         self.font = font
@@ -157,7 +155,7 @@ class BadgeLabelUIView: UILabel {
         let heightOfFont = text?.size(withAttributes: [NSAttributedString.Key.font: self.font]).height ?? 0
 
         // Dividing the smallestWidthOrHeight by 2 gives us the radius for the circle.
-        return (smallestWidthOrHeight/2) - heightOfFont + 10
+        return (smallestWidthOrHeight/2) - heightOfFont + 5
     }
 }
 
